@@ -21,6 +21,7 @@ config/scenes.yaml
 config/blueprints
 config/scripts.yaml
 config/.HA_VERSION
+config/custom_components
 
 ip_bans.yaml
 known_devices.yaml

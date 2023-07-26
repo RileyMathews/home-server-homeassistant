@@ -1,0 +1,26 @@
+.env.secret
+
+# Traefik
+traefik/acme.json
+traefik/usersfile
+
+# Home Assistant
+config/secrets.yaml
+config/.storage
+config/.cloud
+config/.google.token
+config/home-assistant.log
+config/home-assistant.log.1
+config/home-assistant.log.fault
+config/media
+config/automations.yaml
+config/zigbee.db
+config/zigbee.db-shm
+config/zigbee.db-wal
+config/scenes.yaml
+config/blueprints
+config/scripts.yaml
+config/.HA_VERSION
+
+ip_bans.yaml
+known_devices.yaml

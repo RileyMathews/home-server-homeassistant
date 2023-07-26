@@ -1,0 +1,28 @@
+version: '3'
+services:
+  homeassistant:
+    user: "1000"
+    container_name: homeassistant
+    image: "homeassistant/home-assistant:2023.7.2"
+    volumes:
+      - ./config:/config
+      - /etc/localtime:/etc/localtime:ro
+    devices:
+      - /dev/ttyACM0:/dev/ttyACM0
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+    # home assistant has to run on network mode host to connect to physical devices in 
+    # the house. It is configured with traefik by a file provider. See readme for more info.
+    depends_on:
+      - database
+
+  database:
+    user: "1000"
+    image: postgres:15
+    ports:
+      - 15432:5432
+    env_file:
+      - .env.secret
+    volumes:
+      - "/media/rileymathews/HDD 1/volumes/home_assistant_database:/var/lib/postgresql/data"

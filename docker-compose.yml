@@ -1,7 +1,6 @@
 version: '3'
 services:
   homeassistant:
-    user: "1000"
     container_name: homeassistant
     image: "homeassistant/home-assistant:2023.7.2"
     volumes:
@@ -25,4 +24,5 @@ services:
     env_file:
       - .env.secret
     volumes:
-      - "/media/rileymathews/HDD 1/volumes/home_assistant_database:/var/lib/postgresql/data"
+      - "/mnt/md0/volumes/homeassistant_pg:/var/lib/postgresql/data"
+    restart: unless-stopped

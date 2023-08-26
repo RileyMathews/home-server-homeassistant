@@ -22,6 +22,7 @@ config/blueprints
 config/scripts.yaml
 config/.HA_VERSION
 config/custom_components
+media
 
 ip_bans.yaml
 known_devices.yaml

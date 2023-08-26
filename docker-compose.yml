@@ -17,14 +17,3 @@ services:
     network_mode: host
     # home assistant has to run on network mode host to connect to physical devices in 
     # the house. It is configured with traefik by a file provider. See readme for more info.
-
-  database:
-    user: "1000"
-    image: postgres:15
-    ports:
-      - 15432:5432
-    env_file:
-      - .env.secret
-    volumes:
-      - "/mnt/md0/volumes/homeassistant_pg:/var/lib/postgresql/data"
-    restart: unless-stopped

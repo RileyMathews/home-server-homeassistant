@@ -1,9 +1,26 @@
 version: '3.8'
 
 services:
-  homeassistant:
+  # homeassistant:
+  #   container_name: homeassistant
+  #   image: "homeassistant/home-assistant:2023.7.2"
+  #   volumes:
+  #     - /mnt/md0/volumes/homeassistant/config:/config
+  #     - ./configuration.yaml:/config/configuration.yaml
+  #     - ./secrets.yaml:/config/secrets.yaml
+  #     - /etc/localtime:/etc/localtime:ro
+  #     - /mnt/md0/volumes/homeassistant/media:/media
+  #   devices:
+  #     - /dev/ttyACM0:/dev/ttyACM0
+  #   restart: unless-stopped
+  #   privileged: true
+  #   network_mode: host
+    # home assistant has to run on network mode host to connect to physical devices in 
+    # the house. It is configured with traefik by a file provider. See readme for more info.
+
+  hassio:
     container_name: homeassistant
-    image: "homeassistant/home-assistant:2023.7.2"
+    image: "linuxserver/homeassistant:2023.7.2"
     volumes:
       - /mnt/md0/volumes/homeassistant/config:/config
       - ./configuration.yaml:/config/configuration.yaml
@@ -13,6 +30,9 @@ services:
     devices:
       - /dev/ttyACM0:/dev/ttyACM0
     restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
     privileged: true
     network_mode: host
     # home assistant has to run on network mode host to connect to physical devices in 

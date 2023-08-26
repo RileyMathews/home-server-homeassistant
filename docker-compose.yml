@@ -1,12 +1,15 @@
-version: '3'
+version: '3.8'
+
 services:
   homeassistant:
     container_name: homeassistant
     image: "homeassistant/home-assistant:2023.7.2"
     volumes:
-      - ./config:/config
+      - /mnt/md0/volumes/homeassistant/config:/config
+      - ./configuration.yaml:/config/configuration.yaml
+      - ./secrets.yaml:/config/secrets.yaml
       - /etc/localtime:/etc/localtime:ro
-      - ./media:/media
+      - /mnt/md0/volumes/homeassistant/media:/media
     devices:
       - /dev/ttyACM0:/dev/ttyACM0
     restart: unless-stopped
@@ -14,8 +17,6 @@ services:
     network_mode: host
     # home assistant has to run on network mode host to connect to physical devices in 
     # the house. It is configured with traefik by a file provider. See readme for more info.
-    depends_on:
-      - database
 
   database:
     user: "1000"

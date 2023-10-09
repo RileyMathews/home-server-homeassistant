@@ -10,9 +10,6 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
-recorder:
-  db_url: !secret database_url
-
 http:
   use_x_forwarded_for: true
   trusted_proxies:

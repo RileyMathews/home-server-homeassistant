@@ -22,13 +22,11 @@ services:
     container_name: homeassistant
     image: "linuxserver/homeassistant:2023.7.2"
     volumes:
-      - /mnt/md0/volumes/homeassistant/config:/config
+      - ./config:/config
       - ./configuration.yaml:/config/configuration.yaml
       - ./secrets.yaml:/config/secrets.yaml
       - /etc/localtime:/etc/localtime:ro
-      - /mnt/md0/volumes/homeassistant/media:/media
-    devices:
-      - /dev/ttyACM0:/dev/ttyACM0
+      - ./media:/media
     restart: unless-stopped
     environment:
       - PUID=1000
